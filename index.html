@@ -147,6 +147,8 @@
 
       .indicacion {
         font-size: 1rem;
+        top: 20%;
+        transform: translate(-50%, 0);
       }
 
       .flecha {
@@ -156,12 +158,33 @@
       .boton-principal {
         font-size: 1rem;
         padding: 10px 18px;
+        position: static;
+        margin: 10px auto;
+        display: block;
+        transform: none;
+      }
+
+      #contenedor-secundario {
+        position: static;
+        transform: none;
+        flex-direction: column;
+        top: auto;
+        left: auto;
+        width: 90%;
+        max-width: 400px;
+        margin: 10px auto 20px auto;
+      }
+
+      #opciones {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
       }
 
       #opciones button {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-        min-width: 100px;
+        width: 100%;
+        min-width: auto;
+        font-size: 0.95rem;
       }
 
       #mensaje {
