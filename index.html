@@ -3,228 +3,179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un descanso para vos</title>
+  <title>Mockup Viedma 🌸</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
-      text-align: center;
       margin: 0;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    /* Fondo con imagen + overlay de gradiente */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("Costa_Viedma.jpg") no-repeat center center/cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(186, 85, 211, 0.5), rgba(255, 182, 193, 0.5));
+      z-index: -1;
     }
 
     h1 {
-      color: #2e6da4;
       margin-top: 20px;
-      font-size: 2rem;
+      font-size: 28px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     }
 
     p {
-      margin: 10px 0 20px 0;
-      font-size: 1.1rem;
+      font-size: 18px;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
     }
 
-    .contenedor-imagen {
-      text-align: center;
-      width: 100%;
-      background-color: #f0f8ff;
-    }
-
-    .imagen-grande {
-      width: 100%;
-      height: auto;
-      object-fit: contain; /* muestra toda la imagen sin cortar */
-    }
-
-    /* Frase y flecha arriba del botón */
+    /* Texto y flecha arriba del botón */
     .indicacion {
-      position: absolute;
-      top: 28%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: #2e6da4;
+      font-size: 18px;
       font-weight: bold;
-      font-size: 1.2rem;
+      margin-bottom: 10px;
+      animation: bounce 1.5s infinite;
     }
 
     .flecha {
-      font-size: 2rem;
-      margin-top: 5px;
-      animation: bounce 1s infinite;
+      font-size: 30px;
+      margin-bottom: 15px;
+      animation: bounce 1.5s infinite;
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
+      50% { transform: translateY(-5px); }
     }
 
     /* Botón principal */
     .boton-principal {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #2e6da4;
-      color: white;
+      display: block;
+      margin: 0 auto 30px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #6a1b9a;
       border: none;
       padding: 14px 24px;
-      font-size: 1.2rem;
-      border-radius: 10px;
+      font-size: 18px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
     .boton-principal:hover {
-      background-color: #1f4d72;
-      transform: translate(-50%, -50%) scale(1.1);
-      box-shadow: 0 0 15px rgba(46,109,164,0.6);
+      background-color: #fff;
+      transform: scale(1.1);
     }
 
-    /* Contenedor de botones secundarios + frase */
-    #contenedor-secundario {
-      position: absolute;
-      top: 65%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      width: 90%;
-      max-width: 500px;
-    }
-
+    /* Contenedor botones secundarios */
     #opciones {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      display: none; /* ocultos al inicio */
+      margin-top: 30px;
       justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
     #opciones button {
-      background-color: rgba(46,109,164,0.9);
-      color: white;
+      background-color: rgba(255, 255, 255, 0.85);
+      color: #6a1b9a;
       border: none;
-      padding: 10px 16px;
-      font-size: 1rem;
-      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 20px;
+      border-radius: 10px;
       cursor: pointer;
       transition: transform 0.2s ease, background-color 0.3s ease;
-      flex: 1 1 auto;
-      min-width: 120px;
     }
 
     #opciones button:hover {
-      background-color: rgba(31,77,114,0.9);
-      transform: scale(1.05) rotate(2deg);
+      background-color: #fff;
+      transform: scale(1.15) rotate(2deg);
     }
 
-    /* Frase motivadora debajo de los botones secundarios */
+    /* Frase motivadora */
     #mensaje {
-      margin-top: 10px;
-      background-color: rgba(255,255,255,0.7);
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: #2e6da4;
       display: none;
-      width: 100%;
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      background-color: rgba(0,0,0,0.5);
+      padding: 10px 20px;
+      border-radius: 12px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeIn 0.6s ease;
     }
 
-    /* 📱 Ajustes móviles */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-      p {
-        font-size: 1rem;
-      }
+    /* Partículas flotantes */
+    .particle {
+      position: absolute;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
 
-      .indicacion {
-        position: static;
-        transform: none;
-        margin-bottom: 10px;
-        font-size: 1rem;
-      }
-
-      .flecha {
-        font-size: 1.5rem;
-      }
-
-      .boton-principal {
-        position: static;
-        transform: none;
-        display: block;
-        margin: 10px auto;
-      }
-
-      #contenedor-secundario {
-        position: static;
-        transform: none;
-        flex-direction: column;
-        top: auto;
-        left: auto;
-        width: 90%;
-        max-width: 400px;
-        margin: 10px auto 20px auto;
-      }
-
-      #opciones {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: center;
-      }
-
-      #opciones button {
-        width: 100%;
-        min-width: auto;
-        font-size: 0.95rem;
-      }
-
-      #mensaje {
-        font-size: 0.9rem;
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      .imagen-grande {
-        max-height: 50vh;
-        object-fit: contain;
-      }
+    @keyframes float {
+      from { transform: translateY(100vh) scale(0.8); opacity: 0; }
+      30% { opacity: 1; }
+      to { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <h1>¡Hola Malenaaaaa! 🌸</h1>
+  <div class="background"></div>
+  <div class="overlay"></div>
+
+  <h1>¡Hola Malenaaaa! 🌸</h1>
   <p>Tomarte un descanso también es parte del éxito. ¡Vos podés con este final!</p>
 
-  <div class="contenedor-imagen">
-    <img src="Costa_Viedma.jpg" class="imagen-grande" alt="Paisaje Viedma">
+  <!-- Texto y flecha -->
+  <div class="indicacion">Si te cansaste de estudiar, tocá acá</div>
+  <div class="flecha">⬇️</div>
 
-    <div class="indicacion">
-      <div>Si estás cansada de estudiar toca acá</div>
-      <div class="flecha">⬇️</div>
-    </div>
+  <!-- Botón principal -->
+  <button class="boton-principal" onclick="mostrarOpciones()">Necesito un break</button>
 
-    <button class="boton-principal" onclick="mostrarOpciones()">Necesito un break</button>
-
-    <div id="contenedor-secundario">
-      <div id="opciones">
-        <button onclick="mostrarFrase()">Motivate!</button>
-        <button onclick="abrirTikTok()">Reíte un rato</button>
-        <button onclick="abrirBoquita()">Boquita💙💛💙</button>
-      </div>
-      <div id="mensaje"></div>
-    </div>
+  <!-- Botones secundarios (ocultos al inicio) -->
+  <div id="opciones">
+    <button onclick="mostrarFrase()">💪</button>
+    <button onclick="abrirTikTok()">😂</button>
+    <button onclick="abrirBoquita()">💙💛💙</button>
   </div>
+
+  <!-- Frase motivadora -->
+  <div id="mensaje"></div>
+
+  <!-- Partículas -->
+  <div id="particles"></div>
 
   <script>
     const frases = [
-      "Respirá ¡vas muy bien! 💙",
+      "¡Vas muy bien! 💙",
       "Un mate o un café y volvés con todo ☕",
       "Estás más cerca de lo que pensás ✨",
       "Si me necesitás, llamame!!",
@@ -232,8 +183,16 @@
       "¡Confío en vos, podés con esto! 🌟"
     ];
 
+    const tiktoks = [
+      "https://vm.tiktok.com/ZMAMV6cnA/",
+      "https://vm.tiktok.com/ZMAM4o43P/",
+      "https://vm.tiktok.com/ZMAMV6dAE/",
+      "https://vm.tiktok.com/ZMAMVMnPX/",
+      "https://vm.tiktok.com/ZMAMVN5YP/"
+    ];
+
     function mostrarOpciones() {
-      document.getElementById("contenedor-secundario").style.display = "flex";
+      document.getElementById("opciones").style.display = "flex";
       document.getElementById("mensaje").style.display = "none";
     }
 
@@ -244,23 +203,31 @@
       mensaje.style.display = "block";
     }
 
-    const linksTikTok = [
-      "https://vm.tiktok.com/ZMAMV6cnA/",
-      "https://vm.tiktok.com/ZMAM4o43P/",
-      "https://vm.tiktok.com/ZMAMV6dAE/",
-      "https://vm.tiktok.com/ZMAMVMnPX/",
-      "https://vm.tiktok.com/ZMAMVN5YP/"
-    ];
-    let indexTikTok = 0;
-
     function abrirTikTok() {
-      window.open(linksTikTok[indexTikTok], "_blank");
-      indexTikTok = (indexTikTok + 1) % linksTikTok.length;
+      const randomIndex = Math.floor(Math.random() * tiktoks.length);
+      window.open(tiktoks[randomIndex], "_blank");
     }
 
     function abrirBoquita() {
       window.open("https://youtu.be/D9WJi4H1LNU?si=53DfytTPmDAROHnx", "_blank");
     }
+
+    // Generar partículas
+    function generarParticulas() {
+      const container = document.getElementById("particles");
+      const emojis = ["✨", "💖", "⭐", "🌸", "💙"];
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        particle.style.left = Math.random() * 100 + "vw";
+        particle.style.animationDuration = 5 + Math.random() * 5 + "s";
+        particle.style.fontSize = 16 + Math.random() * 16 + "px";
+        container.appendChild(particle);
+      }
+    }
+
+    generarParticulas();
   </script>
 </body>
 </html>
