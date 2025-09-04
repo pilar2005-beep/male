@@ -25,17 +25,15 @@
     }
 
     .contenedor-imagen {
-      position: relative;
+      text-align: center;
       width: 100%;
-      max-height: 80vh;
-      overflow: hidden;
+      background-color: #f0f8ff;
     }
 
     .imagen-grande {
       width: 100%;
       height: auto;
-      object-fit: cover;
-      display: block;
+      object-fit: contain; /* muestra toda la imagen sin cortar */
     }
 
     /* Frase y flecha arriba del botón */
@@ -61,7 +59,7 @@
       50% { transform: translateY(10px); }
     }
 
-    /* Botón principal sobre la imagen */
+    /* Botón principal */
     .boton-principal {
       position: absolute;
       top: 40%;
@@ -135,7 +133,7 @@
       width: 100%;
     }
 
-    /* 📱 Ajustes para pantallas chicas */
+    /* 📱 Ajustes móviles */
     @media (max-width: 600px) {
       h1 {
         font-size: 1.5rem;
@@ -146,9 +144,10 @@
       }
 
       .indicacion {
+        position: static;
+        transform: none;
+        margin-bottom: 10px;
         font-size: 1rem;
-        top: 20%;
-        transform: translate(-50%, 0);
       }
 
       .flecha {
@@ -156,12 +155,10 @@
       }
 
       .boton-principal {
-        font-size: 1rem;
-        padding: 10px 18px;
         position: static;
-        margin: 10px auto;
-        display: block;
         transform: none;
+        display: block;
+        margin: 10px auto;
       }
 
       #contenedor-secundario {
@@ -178,6 +175,7 @@
       #opciones {
         flex-direction: column;
         gap: 10px;
+        width: 100%;
         align-items: center;
       }
 
@@ -189,6 +187,13 @@
 
       #mensaje {
         font-size: 0.9rem;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .imagen-grande {
+        max-height: 50vh;
+        object-fit: contain;
       }
     }
   </style>
@@ -197,20 +202,16 @@
   <h1>¡Hola Malenaaaaa! 🌸</h1>
   <p>Tomarte un descanso también es parte del éxito. ¡Vos podés con este final!</p>
 
-  <!-- Imagen con botones encima -->
   <div class="contenedor-imagen">
     <img src="Costa_Viedma.jpg" class="imagen-grande" alt="Paisaje Viedma">
 
-    <!-- Frase + flecha sobre el botón -->
     <div class="indicacion">
       <div>Si estás cansada de estudiar toca acá</div>
       <div class="flecha">⬇️</div>
     </div>
 
-    <!-- Botón principal sobre la imagen -->
     <button class="boton-principal" onclick="mostrarOpciones()">Necesito un break</button>
 
-    <!-- Contenedor de botones + frase -->
     <div id="contenedor-secundario">
       <div id="opciones">
         <button onclick="mostrarFrase()">Motivate!</button>
@@ -243,7 +244,6 @@
       mensaje.style.display = "block";
     }
 
-    // TikToks en orden (uno distinto por click)
     const linksTikTok = [
       "https://vm.tiktok.com/ZMAMV6cnA/",
       "https://vm.tiktok.com/ZMAM4o43P/",
